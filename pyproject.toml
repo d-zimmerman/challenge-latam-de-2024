@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "de challenge - 2024"
+version = "0.1.0"
+description = "LATAM DE Challenge"
+authors = ["Diego Zimmerman <dzimmerman2611@gmail.com>"]
+readme = "README.md"
+packages = [{include = "de challenge _ 2024"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
