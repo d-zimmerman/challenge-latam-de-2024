@@ -118,3 +118,16 @@ repos:
         entry: poetry run yamllint
         language: python
         types: [file, yaml]
+
+  - repo: local
+    hooks:
+      - id: export-requirements
+        name: Export requeriments.txt
+        description: Used for regenerating the requirements.txt file if
+          dependencies (without DEV) had changed.
+          With this the requirements.txt will always be updated.
+          Use this only for local development.
+        language: system
+        pass_filenames: false
+        entry: poetry export --without-hashes -o requirements.txt --without dev
+        files: ^(pyproject.toml|poetry.lock)$
