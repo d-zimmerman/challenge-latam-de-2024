@@ -11,6 +11,10 @@ python = "^3.11"
 memory-profiler = "0.61.0"
 
 
+[tool.poetry.group.dev.dependencies]
+pylint = "3.2.7"
+pre-commit = "^3.8.0"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
