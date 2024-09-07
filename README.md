@@ -73,3 +73,27 @@ Returns:
 ## Sugerencias
 * Para medir la memoria en uso te recomendamos [memory-profiler](https://pypi.org/project/memory-profiler/) o [memray](https://github.com/bloomberg/memray)
 * Para medir el tiempo de ejecución te recomendamos [py-spy](https://github.com/benfred/py-spy) o [Python Profilers](https://docs.python.org/3/library/profile.html)
+
+# Documentación del proyecto
+
+## pre-commit hooks
+
+En el proyecto podrán encontrar el archivo `.pre-commit-config.yaml`. Este archivo tiene la intención de declarar aquellos hooks que correrán cada vez que
+se quiera realizar un commit en el proyecto.
+
+Estos pre-commit hooks deben instalarse de manera local para que tomen efecto, por lo cual depende de cada desarrollador.
+
+Para instalarlos necesitaremos:
+1. Tener `poetry` instalado en nuestro entorno local.
+2. Correr el comando `poetry install`
+   1. Esto hará que `poetry` cree un entorno de desarrollo para nuestro proyecto donde se instalarán todas las librerías/dependencias de este.
+3. Correr el comando `poetry run pre-commit install`
+   1. Esto instalará los pre-commit hook en nuestro entorno local, más precisamente en la carpeta de `.git` de nuestro repo local
+4. Una vez hecho lo anterior deberemos ver una notificación en nuestra CLI que dice "pre-commit installed at .git\hooks\pre-commit".
+ Esto nos informa de que los pre-commit hooks ya están instalados. Ahora cada vez que se quiera hacer un commit, estos hooks se ejecutarán.
+
+**Nota**: Al momento de realizar el siguiente `commit` es de esperar que el proyecto empiece a instalar todos los `hooks` que se encuentran declarados en el
+archivo `.pre-commit-config.yaml`. Esto solo ocurrirá la primera vez.
+
+**Nota**: En caso de que se quiera evitar el uso de los hooks al momento del commit se puede usar el flag `--no-verify` junto con la instrucción `git commit`.
+Recomendamos solo usar esto en caso de extrema necesidad a modo de asegurar la calidad de código en todo momento.
