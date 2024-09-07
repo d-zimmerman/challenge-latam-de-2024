@@ -9,8 +9,8 @@ services:
       dockerfile: ./docker/hub/Dockerfile.dev
     environment:
       - LOGGER_NAME=LATAM_APP
-      - LOGS_DIR=/app/logs
+      - LOGS_DIR=/project/logs
       - LOGS_FILE=app_logs
     volumes:
-      - ../src:/app/src
-      - ../logs:/app/logs
+      - ../src:/project/src
+      - ../logs:/project/logs
