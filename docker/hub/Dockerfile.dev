@@ -8,5 +8,8 @@ COPY ./requirements.txt /project/requirements.txt
 # Install the package dependencies in the generated requirements.txt file.
 RUN pip install -r /project/requirements.txt
 
+# Add project's dir in PYTHONPATH
+ENV PYTHONPATH=/project:$PYTHONPATH
+
 # Entrypoint to keep container running
 ENTRYPOINT ["tail", "-f", "/dev/null"]
