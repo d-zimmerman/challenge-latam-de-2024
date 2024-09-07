@@ -94,3 +94,6 @@ Para instalarlos necesitaremos:
 
 **Nota**: Al momento de realizar el siguiente `commit` es de esperar que el proyecto empiece a instalar todos los `hooks` que se encuentran declarados en el
 archivo `.pre-commit-config.yaml`. Esto solo ocurrirá la primera vez.
+
+**Nota**: En caso de que se quiera evitar el uso de los hooks al momento del commit se puede usar el flag `--no-verify` junto con la instrucción `git commit`.
+Recomendamos solo usar esto en caso de extrema necesidad a modo de asegurar la calidad de código en todo momento.
