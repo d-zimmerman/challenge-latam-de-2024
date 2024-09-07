@@ -1,0 +1,11 @@
+---
+version: "3.8"
+
+services:
+  app:
+    container_name: app_latam
+    build:
+      context: ../
+      dockerfile: ./docker/hub/Dockerfile.dev
+    volumes:
+      - ../src:/app/src
