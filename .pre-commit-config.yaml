@@ -125,7 +125,7 @@ repos:
         name: Export requeriments.txt
         description: Used for regenerating the requirements.txt file if
           dependencies (without DEV) had changed.
-          With this the requirements.txt will always be updated.
+          With this the requirements.txt will always be up to date.
           Use this only for local development.
         language: system
         pass_filenames: false
