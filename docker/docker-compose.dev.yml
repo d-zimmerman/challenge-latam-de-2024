@@ -12,5 +12,6 @@ services:
       - LOGS_DIR=/project/logs
       - LOGS_FILE=app_logs
     volumes:
+      - ../app:/project/app
       - ../src:/project/src
       - ../logs:/project/logs
