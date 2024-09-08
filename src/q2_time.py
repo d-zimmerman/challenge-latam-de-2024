@@ -18,6 +18,15 @@ module_logger = Logger.get_app_logger("Q2-TIME")
 def q2_time(file_path: str) -> List[Tuple[str, int]]:
     """Answer question 2 efficiently in time.
 
+        Since memory usage is not a limitation in this case,
+        what we will do is load all the tweets into a single string
+        and then process it with a Regular Expression (RegEx) that will contain
+        all the emojis existing in the `emoji` library.
+
+        After obtaining the list of total emojis, we will use a Counter
+        to return the top 10 of these and their corresponding
+        number of appearances.
+
     Parameters
     ----------
     file_path : str
