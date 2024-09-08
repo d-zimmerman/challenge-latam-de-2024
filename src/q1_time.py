@@ -7,12 +7,13 @@ import polars as pl
 
 from app.extract import read_json_file
 from app.logger import Logger
-from app.utils import profile_function
+from app.utils import memory_profile_logging_wrapper, profile_function
 
 module_logger = Logger.get_app_logger("Q1-TIME")
 
 
 @profile_function
+@memory_profile_logging_wrapper
 def q1_time(file_path: str) -> List[Tuple[datetime.date, str]]:
     """Answer question 1 efficiently in time.
 
