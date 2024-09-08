@@ -5,8 +5,7 @@ import json
 from collections import defaultdict
 from typing import List, Tuple
 
-import emoji
-
+from app.constants import EMOJI_PATTERN
 from app.logger import Logger
 from app.utils import memory_profile_logging_wrapper, profile_function
 
@@ -18,18 +17,12 @@ module_logger = Logger.get_app_logger("Q2-MEMORY")
 def q2_memory(file_path: str) -> List[Tuple[str, int]]:
     """Answer question 2 efficiently in memory.
 
-        I use the `emoji` library to make things simpler.
-        By doing so we leave it up to the library to keep
-        the list of existing emojis up to date (
-        thus reducing complexity and maintenance on our side).
-        The downside of this is that we have no control over
-        the implementation of this library and the processing
-        may not be thinking about memory efficiency.
-
-        Despite this, I consider that for this particular application,
-        after some tests, this library fits very well for
-        the usage scenario. The simplified emoji search
-        implies that this library is an excellent solution.
+        The approach used in the function is to load the JSON
+        file line by line.
+        If the `content' key exists, then we look for emojis in the content.
+        Once emojis are found for that line, the dictionary with the counts is
+        updated.
+        After every line has been reviewed, we look for the TOP 10.
 
     Parameters
     ----------
@@ -52,8 +45,9 @@ def q2_memory(file_path: str) -> List[Tuple[str, int]]:
             if 'content' not in data:
                 continue
             # Extract all emojis from tweet and update dict with count
-            for value in emoji.analyze(data['content']):
-                emoji_counter[value.chars] += 1
+            for match in EMOJI_PATTERN.findall(data["content"]):
+                if match:  # Only count non-None matches
+                    emoji_counter[match] += 1
     module_logger.info("Emojis counted.")
 
     module_logger.info("Finding TOP 10 emojis")

@@ -241,7 +241,7 @@ files = [
 name = "emoji"
 version = "2.12.1"
 description = "Emoji for Python"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
@@ -1312,7 +1312,7 @@ test = ["argcomplete (>=3.0.3)", "mypy (>=1.7.0)", "pre-commit", "pytest (>=7.0,
 name = "typing-extensions"
 version = "4.12.2"
 description = "Backported and Experimental Type Hints for Python 3.8+"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.8"
 files = [
@@ -1368,4 +1368,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "a54f9b69702475634982039c852a6c616b5795e6ee18303651e758c1ee39f75f"
+content-hash = "7e3708bbb0aa11cffa022985dcba126f9878c55058f21a26145abe7cb58389f0"
