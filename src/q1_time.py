@@ -5,11 +5,13 @@ from typing import List, Tuple
 
 import polars as pl
 
+from app.constants import DATETIME_FORMAT
+from app.enums import LoggerModuleEnum
 from app.extract import read_json_file
 from app.logger import Logger
 from app.utils import memory_profile_logging_wrapper, profile_function
 
-module_logger = Logger.get_app_logger("Q1-TIME")
+module_logger = Logger.get_app_logger(LoggerModuleEnum.Q1_TIME)
 
 
 @profile_function
@@ -57,11 +59,7 @@ def q1_time(file_path: str) -> List[Tuple[datetime.date, str]]:
     module_logger.info("Parsing date column")
     # Convert the 'date' column to datetime format
     tweets_df = tweets_df.with_columns(
-        [
-            pl.col("date").str.strptime(
-                pl.Datetime, format="%Y-%m-%dT%H:%M:%S%z", strict=False
-            )
-        ]
+        [pl.col("date").str.strptime(pl.Datetime, format=DATETIME_FORMAT, strict=False)]
     )
 
     module_logger.info("Finding top users by date")

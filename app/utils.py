@@ -7,10 +7,12 @@ import pstats
 from logger import Logger
 from memory_profiler import memory_usage, profile
 
+from app.enums import LoggerModuleEnum
+
 
 def profile_function(func):
     """Run cProfile over the function."""
-    profiler_logger = Logger.get_app_logger("cProfile")
+    profiler_logger = Logger.get_app_logger(LoggerModuleEnum.TIME_PROFILER)
 
     def wrapper(*args, **kwargs):
         """Wrap the function to run cProfile over it."""
@@ -37,7 +39,7 @@ def profile_function(func):
 
 def memory_profile_logging_wrapper(func):
     """Run Memory Profile over the function."""
-    profiler_logger = Logger.get_app_logger("MemoryProfile")
+    profiler_logger = Logger.get_app_logger(LoggerModuleEnum.MEMORY_PROFILE)
 
     def wrapper(*args, **kwargs):
         """Wrap the function to run Memory Profile over it."""

@@ -5,10 +5,11 @@ from typing import List, Tuple
 
 import orjson
 
+from app.enums import LoggerModuleEnum
 from app.logger import Logger
 from app.utils import memory_profile_logging_wrapper, profile_function
 
-module_logger = Logger.get_app_logger("Q3-TIME")
+module_logger = Logger.get_app_logger(LoggerModuleEnum.Q3_TIME)
 
 
 @profile_function

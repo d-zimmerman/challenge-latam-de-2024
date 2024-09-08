@@ -7,8 +7,6 @@ PROJECT_ROOT = Path(__file__).parent.parent
 
 DATA_DIR = PROJECT_ROOT / "data"
 
-FILENAME = "farmers-protest-tweets-2021-2-4.json"
-
 EMOJI_PATTERN = re.compile(
     r'['
     r'\U0001F600-\U0001F64F'
@@ -24,3 +22,6 @@ EMOJI_PATTERN = re.compile(
     r'\U0001F1E6-\U0001F1FF'
     r']+'
 )
+
+DATETIME_FORMAT = r"%Y-%m-%dT%H:%M:%S%z"
+DATE_FORMAT = r'%Y-%m-%d'
