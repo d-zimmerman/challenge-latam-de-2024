@@ -9,7 +9,6 @@ packages = [{include = "de challenge _ 2024"}]
 [tool.poetry.dependencies]
 python = "^3.11"
 memory-profiler = "0.61.0"
-ijson = "^3.3.0"
 
 
 [tool.poetry.group.dev.dependencies]
