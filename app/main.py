@@ -1,5 +1,8 @@
 """This module contains the main function of the project."""
 
+from pathlib import Path
+from typing import Union
+
 from logger import Logger
 
 from app.constants import DATA_DIR, FILENAME
@@ -14,11 +17,15 @@ from src.q3_time import q3_time
 module_logger = Logger.get_app_logger(LoggerModuleEnum.MAIN_APP)
 
 
-def main() -> None:
-    """Run main script of the app."""
-    module_logger.info("Starting main.")
+def main(file_path: Union[str, Path]) -> None:
+    """Run main script of the app.
 
-    file_path = DATA_DIR / FILENAME
+    Parameters
+    ----------
+    file_path : Union[str, Path]
+        Path of the file to be loaded.
+    """
+    module_logger.info("Starting main.")
 
     result = q1_memory(file_path)
     module_logger.info(f"Q1-MEMORY result:\n{result}")
@@ -43,4 +50,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     Logger()
-    main()
+    main(file_path=DATA_DIR / FILENAME)
