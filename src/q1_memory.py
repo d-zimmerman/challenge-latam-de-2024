@@ -7,11 +7,12 @@ from datetime import datetime
 from typing import List, Tuple
 
 from app.logger import Logger
-from app.utils import memory_profile_logging_wrapper
+from app.utils import memory_profile_logging_wrapper, profile_function
 
 module_logger = Logger.get_app_logger("Q1-MEMORY")
 
 
+@profile_function
 @memory_profile_logging_wrapper
 def q1_memory(file_path: str) -> List[Tuple[datetime.date, str]]:
     """Answer question 1 efficiently in memory.
