@@ -3,6 +3,7 @@
 from logger import Logger
 
 from app.constants import DATA_DIR, FILENAME
+from app.enums import LoggerModuleEnum
 from src.q1_memory import q1_memory
 from src.q1_time import q1_time
 from src.q2_memory import q2_memory
@@ -10,7 +11,7 @@ from src.q2_time import q2_time
 from src.q3_memory import q3_memory
 from src.q3_time import q3_time
 
-module_logger = Logger.get_app_logger("MAIN")
+module_logger = Logger.get_app_logger(LoggerModuleEnum.MAIN_APP)
 
 
 def main() -> None:

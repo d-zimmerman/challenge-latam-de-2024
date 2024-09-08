@@ -5,11 +5,12 @@ from typing import List, Tuple
 
 import polars as pl
 
+from app.enums import LoggerModuleEnum
 from app.extract import read_json_file
 from app.logger import Logger
 from app.utils import memory_profile_logging_wrapper, profile_function
 
-module_logger = Logger.get_app_logger("Q1-TIME")
+module_logger = Logger.get_app_logger(LoggerModuleEnum.Q1_TIME)
 
 
 @profile_function

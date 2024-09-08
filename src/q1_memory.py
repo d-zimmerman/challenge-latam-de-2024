@@ -6,10 +6,11 @@ from collections import defaultdict
 from datetime import datetime
 from typing import List, Tuple
 
+from app.enums import LoggerModuleEnum
 from app.logger import Logger
 from app.utils import memory_profile_logging_wrapper, profile_function
 
-module_logger = Logger.get_app_logger("Q1-MEMORY")
+module_logger = Logger.get_app_logger(LoggerModuleEnum.Q1_MEMORY)
 
 
 @profile_function

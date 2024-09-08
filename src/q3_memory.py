@@ -5,10 +5,11 @@ import json
 from collections import defaultdict
 from typing import List, Tuple
 
+from app.enums import LoggerModuleEnum
 from app.logger import Logger
 from app.utils import memory_profile_logging_wrapper, profile_function
 
-module_logger = Logger.get_app_logger("Q2-MEMORY")
+module_logger = Logger.get_app_logger(LoggerModuleEnum.Q3_MEMORY)
 
 
 @profile_function
