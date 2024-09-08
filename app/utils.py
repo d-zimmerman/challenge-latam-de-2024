@@ -19,15 +19,15 @@ def profile_function(func):
         result = func(*args, **kwargs)
         profiler.disable()
 
-        # Crear un buffer de texto
+        # Define output/text buffer
         text_buffer = io.StringIO()
-        # Generar estadísticas de cProfile y redirigir la salida al buffer
+        # Generate cProfile stats and point its output to the output buffer
         profiler_stats = pstats.Stats(profiler, stream=text_buffer).sort_stats(
             'cumulative'
         )
         profiler_stats.print_stats()
 
-        # Enviar los resultados del buffer al logger
+        # Log stats
         profiler_logger.info("cProfile results:\n%s", text_buffer.getvalue())
 
         return result
@@ -41,12 +41,12 @@ def memory_profile_logging_wrapper(func):
 
     def wrapper(*args, **kwargs):
         """Wrap the function to run Memory Profile over it."""
-        # Capturing output using StringIO
+        # Capture output using StringIO
         stream = io.StringIO()
         mem_before = memory_usage()[0]
         profiler_logger.info(f"Memory before execution: {mem_before} MiB")
 
-        # Overriding the stream in memory_profiler
+        # Override the stream in memory_profiler
         profiled_func = profile(stream=stream)(func)
 
         # Execute the function with memory profiling
