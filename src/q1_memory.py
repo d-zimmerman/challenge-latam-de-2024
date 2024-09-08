@@ -6,6 +6,7 @@ from collections import defaultdict
 from datetime import datetime
 from typing import List, Tuple
 
+from app.constants import DATE_FORMAT
 from app.enums import LoggerModuleEnum
 from app.logger import Logger
 from app.utils import memory_profile_logging_wrapper, profile_function
@@ -58,7 +59,7 @@ def q1_memory(file_path: str) -> List[Tuple[datetime.date, str]]:
             # Extract date and parse it
             # Increment tweet counter by date
             tweet_count_by_date[
-                datetime.strptime(tweet['date'].split('T')[0], r'%Y-%m-%d').date()
+                datetime.strptime(tweet['date'].split('T')[0], DATE_FORMAT).date()
             ] += 1
 
     # Find TOP 10 dates
@@ -91,13 +92,13 @@ def q1_memory(file_path: str) -> List[Tuple[datetime.date, str]]:
             # Given that we only have 10 dates, we are going to consider
             # this improvement as unnecessary for now.
             if (
-                datetime.strptime(tweet['date'].split('T')[0], r'%Y-%m-%d').date()
+                datetime.strptime(tweet['date'].split('T')[0], DATE_FORMAT).date()
                 not in top_10_dates
             ):
                 continue
 
             user_tweet_count_by_date[
-                datetime.strptime(tweet['date'].split('T')[0], r'%Y-%m-%d').date()
+                datetime.strptime(tweet['date'].split('T')[0], DATE_FORMAT).date()
             ][tweet["user"]['username']] += 1
 
         for top_date in top_10_dates:
