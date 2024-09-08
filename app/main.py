@@ -5,6 +5,7 @@ from logger import Logger
 from app.constants import DATA_DIR, FILENAME
 from src.q1_memory import q1_memory
 from src.q1_time import q1_time
+from src.q2_memory import q2_memory
 
 module_logger = Logger.get_app_logger("MAIN")
 
@@ -20,6 +21,9 @@ def main() -> None:
 
     result = q1_time(file_path)
     module_logger.info(f"Q1-TIME result:\n{result}")
+
+    result = q2_memory(file_path)
+    module_logger.info(f"Q2-MEMORY result:\n{result}")
 
     module_logger.info("Ending main.")
 
