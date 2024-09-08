@@ -5,7 +5,7 @@ from typing import Union
 
 from logger import Logger
 
-from app.constants import DATA_DIR, FILENAME
+from app.constants import DATA_DIR
 from app.enums import LoggerModuleEnum
 from src.q1_memory import q1_memory
 from src.q1_time import q1_time
@@ -49,5 +49,6 @@ def main(file_path: Union[str, Path]) -> None:
 
 
 if __name__ == "__main__":
+    FILENAME = "farmers-protest-tweets-2021-2-4.json"
     Logger()
     main(file_path=DATA_DIR / FILENAME)

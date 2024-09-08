@@ -7,8 +7,6 @@ PROJECT_ROOT = Path(__file__).parent.parent
 
 DATA_DIR = PROJECT_ROOT / "data"
 
-FILENAME = "farmers-protest-tweets-2021-2-4.json"
-
 EMOJI_PATTERN = re.compile(
     r'['
     r'\U0001F600-\U0001F64F'
