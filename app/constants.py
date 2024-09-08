@@ -24,3 +24,6 @@ EMOJI_PATTERN = re.compile(
     r'\U0001F1E6-\U0001F1FF'
     r']+'
 )
+
+DATETIME_FORMAT = r"%Y-%m-%dT%H:%M:%S%z"
+DATE_FORMAT = r'%Y-%m-%d'
