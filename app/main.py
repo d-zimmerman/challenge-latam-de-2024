@@ -3,10 +3,9 @@
 from pathlib import Path
 from typing import Union
 
-from logger import Logger
-
 from app.constants import DATA_DIR
 from app.enums import LoggerModuleEnum
+from app.logger import Logger
 from src.q1_memory import q1_memory
 from src.q1_time import q1_time
 from src.q2_memory import q2_memory
