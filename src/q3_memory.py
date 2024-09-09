@@ -21,7 +21,7 @@ def q3_memory(file_path: str) -> List[Tuple[str, int]]:
             1. Use a RegEx to find the mentions (@) in the context/text
               of the tweet.
             2. Use the `mentionedUsers` key in the JSON and leaving to
-              the API of Tweeter the identification of those mentions
+              the API of Twitter the identification of those mentions
 
         I decided to go with the second approach.
 

@@ -3,7 +3,7 @@
 import logging
 import sys
 
-from cfg import LoggerConfig
+from app.cfg import LoggerConfig
 
 
 class Logger:

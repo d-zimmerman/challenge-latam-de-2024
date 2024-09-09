@@ -13,8 +13,11 @@ services:
       - ../notebooks:/home/jovyan/notebooks
       - ../app:/home/jovyan/app
       - ../src:/home/jovyan/src
-      - ../logs:/project/logs
-      - ../data:/project/data
+      - ../logs:/home/jovyan/logs
+      - ../data:/home/jovyan/data
     environment:
       - JUPYTER_ENABLE_LAB=no
+      - LOGGER_NAME=LATAM_APP
+      - LOGS_DIR=/home/jovyan/logs
+      - LOGS_FILE=app_logs
     command: start-notebook.sh --NotebookApp.token=''  # Unable token auth

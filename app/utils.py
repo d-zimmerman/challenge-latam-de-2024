@@ -4,10 +4,10 @@ import cProfile
 import io
 import pstats
 
-from logger import Logger
 from memory_profiler import memory_usage, profile
 
 from app.enums import LoggerModuleEnum
+from app.logger import Logger
 
 
 def profile_function(func):
