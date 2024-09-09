@@ -1,0 +1,18 @@
+---
+version: "3.8"
+
+services:
+  app:
+    container_name: app_latam
+    build:
+      context: ../
+      dockerfile: ./docker/hub/Dockerfile.dev
+    environment:
+      - LOGGER_NAME=LATAM_APP
+      - LOGS_DIR=/project/logs
+      - LOGS_FILE=app_logs
+    volumes:
+      - ../app:/project/app
+      - ../src:/project/src
+      - ../logs:/project/logs
+      - ../data:/project/data

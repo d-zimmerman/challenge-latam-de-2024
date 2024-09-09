@@ -1,0 +1,23 @@
+---
+version: "3.8"
+
+services:
+  jupyter:
+    container_name: jupyter-notebook
+    build:
+      context: ../
+      dockerfile: ./docker/hub/Dockerfile.jupyter
+    ports:
+      - "8888:8888"
+    volumes:
+      - ../notebooks:/home/jovyan/notebooks
+      - ../app:/home/jovyan/app
+      - ../src:/home/jovyan/src
+      - ../logs:/home/jovyan/logs
+      - ../data:/home/jovyan/data
+    environment:
+      - JUPYTER_ENABLE_LAB=no
+      - LOGGER_NAME=LATAM_APP
+      - LOGS_DIR=/home/jovyan/logs
+      - LOGS_FILE=app_logs
+    command: start-notebook.sh --NotebookApp.token=''  # Unable token auth

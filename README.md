@@ -73,3 +73,137 @@ Returns:
 ## Sugerencias
 * Para medir la memoria en uso te recomendamos [memory-profiler](https://pypi.org/project/memory-profiler/) o [memray](https://github.com/bloomberg/memray)
 * Para medir el tiempo de ejecución te recomendamos [py-spy](https://github.com/benfred/py-spy) o [Python Profilers](https://docs.python.org/3/library/profile.html)
+
+# Documentación del proyecto
+
+## pre-commit hooks
+
+En el proyecto podrán encontrar el archivo `.pre-commit-config.yaml`. Este archivo tiene la intención de declarar aquellos hooks que correrán cada vez que
+se quiera realizar un commit en el proyecto.
+
+Estos pre-commit hooks deben instalarse de manera local para que tomen efecto, por lo cual depende de cada desarrollador.
+
+Para instalarlos necesitaremos:
+1. Tener `poetry` instalado en nuestro entorno local.
+2. Correr el comando `poetry install`
+   1. Esto hará que `poetry` cree un entorno de desarrollo para nuestro proyecto donde se instalarán todas las librerías/dependencias de este.
+3. Correr el comando `poetry run pre-commit install`
+   1. Esto instalará los pre-commit hook en nuestro entorno local, más precisamente en la carpeta de `.git` de nuestro repo local
+4. Una vez hecho lo anterior deberemos ver una notificación en nuestra CLI que dice "pre-commit installed at .git\hooks\pre-commit".
+ Esto nos informa de que los pre-commit hooks ya están instalados. Ahora cada vez que se quiera hacer un commit, estos hooks se ejecutarán.
+
+**Nota**: Al momento de realizar el siguiente `commit` es de esperar que el proyecto empiece a instalar todos los `hooks` que se encuentran declarados en el
+archivo `.pre-commit-config.yaml`. Esto solo ocurrirá la primera vez.
+
+**Nota**: En caso de que se quiera evitar el uso de los hooks al momento del commit se puede usar el flag `--no-verify` junto con la instrucción `git commit`.
+Recomendamos solo usar esto en caso de extrema necesidad a modo de asegurar la calidad de código en todo momento.
+
+## Guía para Contribuir al Proyecto
+
+1. Clonar el Repositorio
+
+   Clona el repositorio de Git:
+
+   ```bash
+   git clone <url-del-repositorio>
+   cd <nombre-del-repositorio>
+   ```
+
+1. Configurar el Entorno Local
+
+   Instalar Poetry: Si aún no lo tienes instalado, puedes instalar Poetry siguiendo las instrucciones oficiales [aquí](https://python-poetry.org/docs/#installation).
+
+   Instalar las Dependencias del Proyecto:
+
+   ```bash
+   poetry install
+   ```
+
+   Activar el entorno virtual de Poetry (si es necesario):
+
+   ```bash
+   poetry shell
+   ```
+
+1. Configurar Pre-Commits
+
+   Instala los pre-commits necesarios para el proyecto:
+
+   ```bash
+   poetry run pre-commit install
+   ```
+
+   Puedes ejecutar manualmente los pre-commits para verificar que todo esté en orden:
+
+   ```bash
+   poetry run pre-commit run --all-files
+   ```
+
+1. Flujo de Trabajo con Git
+
+   **Ramas principales:**
+
+      - `main`: Ramas destinadas a producción.
+      - `dev`: Rama de desarrollo, base para nuevas funcionalidades o correcciones.
+
+   **Ramas de trabajo:**
+
+   Para nuevas funcionalidades, crea una rama a partir de `dev`:
+
+   ```bash
+   git checkout dev
+   git pull origin dev
+   git checkout -b feature/<nombre-de-la-feature>
+   ```
+
+   Para corrección de errores, crea una rama a partir de `dev` (excepto `hotfixes` urgentes que van desde main):
+
+   ```bash
+   git checkout dev
+   git pull origin dev
+   git checkout -b bug/<nombre-del-bug>
+   ```
+
+   Para hotfixes urgentes en producción:
+
+   ```bash
+   git checkout main
+   git pull origin main
+   git checkout -b hotfix/<descripcion-del-hotfix>
+   ```
+
+   Para releases a producción:
+
+   ```bash
+   git checkout develop
+   git pull origin develop
+   git checkout -b release/<version-de-la-release>
+   ```
+
+1. Hacer un Pull Request (PR)
+
+   Después de finalizar tu trabajo, envía los cambios a la rama remota:
+
+   ```bash
+   git add .
+   git commit -m "Descripción de los cambios en inglés"
+   git push origin <nombre-de-la-rama>
+   ```
+
+   Abre un Pull Request (PR) en GitHub (o la plataforma que utilices) hacia la rama `dev` (o `main` si es un `hotfix` urgente).
+
+   Sigue este template para documentar los PRs:
+
+   ```markdown
+   # Summary
+   Breve resumen de los cambios realizados.
+
+   # Why Are These Changes Needed
+   Explicación de por qué son necesarios estos cambios.
+
+   # What Changes Does This Introduce
+   Descripción de los cambios que introduces.
+   Espera la aprobación del PR antes de hacer el merge.
+   ```
+
+**IMPORTANTE:** Recuerda que todo el código debe estar en inglés, y se espera una descripción clara en los PRs para facilitar el proceso de revisión.
